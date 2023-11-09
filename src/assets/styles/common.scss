@@ -1,0 +1,161 @@
+.container {
+  width: $full-width;
+  max-width: 1428px;
+  @include padding(0 16px);
+  @include margin(0 auto);
+  box-sizing: border-box;
+
+  &.with-bottom-panel {
+    @include paddingBottom(24px);
+  }
+}
+
+.width--full {
+  width: $full-width !important;
+}
+
+.height--full {
+  height: $full-height !important;
+}
+
+.box-size--border-box {
+  box-sizing: border-box;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.flex {
+  @extend %flex;
+}
+
+.flex--column {
+  @extend %flex--column;
+}
+
+.flex-column--reverse {
+  @extend %flex-column--reverse;
+}
+
+.flex--row {
+  @extend %flex--row;
+}
+
+.flex--row-reverse {
+  @extend %flex--row-reverse;
+}
+
+.flex--wrap {
+  @extend %flex--wrap;
+}
+
+.justify-content--center {
+  @extend %justify-content--center;
+}
+
+.justify-content--end {
+  @extend %justify-content--end;
+}
+
+.justify-content--start {
+  @extend %justify-content--start;
+}
+
+.justify-content--between {
+  @extend %justify-content--between;
+}
+
+.justify-content--around {
+  @extend %justify-content--around;
+}
+
+.align-items--center {
+  @extend %align-items--center;
+}
+
+.align-items--end {
+  @extend %align-items--end;
+}
+
+.align-items--start {
+  @extend %align-items--start;
+}
+
+.align-items--baseline {
+  @extend %align-items--baseline;
+}
+
+.align-items--stretch {
+  align-items: stretch;
+}
+
+.align-content--baseline {
+  align-content: baseline;
+}
+
+.object-fit--cover {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.object-fit--contain {
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+.text--left {
+  text-align: left;
+}
+
+.text--right {
+  text-align: right;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--lowercase {
+  text-transform: lowercase;
+}
+
+.text--uppercase {
+  text-transform: uppercase;
+}
+
+.text--capitalize {
+  text-transform: capitalize;
+}
+
+.position--relative {
+  position: relative;
+}
+
+.position--absolute {
+  position: absolute !important;
+}
+
+.position--fixed {
+  position: fixed;
+}
+
+.overflow--hidden {
+  overflow: hidden;
+}
+
+.overflow--hidden-x {
+  overflow-x: hidden;
+}
+
+.overflow--auto {
+  overflow: auto;
+}
