@@ -1,9 +1,9 @@
-import OrderForm from './features/orderFrom/conatiner/orderForm';
+import OrderForm from './features/orderFrom/container/orderForm';
+import '../src/assets/styles/app.scss';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello ZipShip</h1>
       <OrderForm />
     </div>
   );

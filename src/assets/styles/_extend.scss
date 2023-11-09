@@ -6,10 +6,6 @@
 	display: inline-block;
 }
 
-%transition--default {
-	@include transition(all, 0.5s, ease);
-}
-
 %flex--row {
 	-webkit-box-orient: horizontal !important;
 	-webkit-box-direction: normal !important;
