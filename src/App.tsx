@@ -1,9 +1,9 @@
-import OrderForm from "./features/orderFrom/conatiner/orderForm";
+import OrderForm from './features/orderFrom/conatiner/orderForm';
 
 function App() {
   return (
-    <div className='App'>
-      <h1>Hello Zipship</h1>
+    <div className="App">
+      <h1>Hello ZipShip</h1>
       <OrderForm />
     </div>
   );
