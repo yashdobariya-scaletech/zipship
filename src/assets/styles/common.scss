@@ -178,14 +178,14 @@
 
 .border--grey {
   @each $key, $value in $grey {
-		&-#{$key} {
-			border: 1px solid $value !important;
-		}
-	}
+    &-#{$key} {
+      border: 1px solid $value !important;
+    }
+  }
 }
 
 .font-size--28 {
-	font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
 .line-height--40 {

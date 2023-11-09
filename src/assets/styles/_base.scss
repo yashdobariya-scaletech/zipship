@@ -20,8 +20,8 @@ html {
 }
 
 body {
-  @include margin(0);
-  @include padding(0);
+  // @include margin(0);
+  // @include padding(0);
   color: $black-color;
   background-color: getColor($grey, 25);
 }
@@ -50,9 +50,9 @@ a {
   text-decoration: none;
 }
 
-ul {
-  @include padding(0);
-}
+// ul {
+//   // @include padding(0);
+// }
 
 ul {
   list-style: none;
@@ -61,7 +61,7 @@ ul {
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  @include margin(0);
+  // @include margin(0);
 }
 
 input[type="number"] {
@@ -185,7 +185,7 @@ h4,
 h5,
 h6,
 p {
-  @include margin(0);
+  // @include margin(0);
 }
 
 video {
