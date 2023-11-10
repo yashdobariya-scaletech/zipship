@@ -34,6 +34,30 @@
   cursor: pointer;
 }
 
+.font--light {
+	font-weight: $font-light !important;
+}
+
+.font--regular {
+	font-weight: $font-regular !important;
+}
+
+.font--medium {
+	font-weight: $font-medium !important;
+}
+
+.font--semi-bold {
+	font-weight: $font-semi-bold !important;
+}
+
+.font--bold {
+	font-weight: $font-bold !important;
+}
+
+.font--super {
+	font-weight: $font-super !important;
+}
+
 .flex {
   @extend %flex;
 }
@@ -184,10 +208,113 @@
   }
 }
 
+.font-size--12 {
+  font-size:0.75rem;
+}
+
+.font-size--browser-default {
+  font-size: $font-size-browser-default;
+}
+
+.font-size--24 {
+  font-size: 1.5rem;
+}
+
 .font-size--28 {
   font-size: 1.75rem;
 }
 
+.font-size--32 {
+  font-size: 2rem;
+}
+
+.line-height--32 {
+  line-height: 32px;
+}
+
 .line-height--40 {
   line-height: 40px;
+}
+
+.line-height--48 {
+  line-height: 48px;
+}
+
+.text--red {
+	@include getShadesColorClasses($red, 'color', 'important');
+}
+
+.text--white {
+  color: $white-color;
+}
+
+.mt--5 {
+  @include marginTop(5px);
+}
+
+.mb--5 {
+  @include marginBottom(5px);
+}
+
+.mb--10 {
+  @include marginBottom(10px);
+}
+
+.mb--16 {
+  @include marginBottom(16px);
+}
+
+.mb--24 {
+  @include marginBottom(24px);
+}
+
+.padding--10 {
+  @include padding(10px);
+}
+
+.padding--16 {
+  @include padding(16px);
+}
+
+.form__input {
+  background-color: transparent;
+	font-size: $font-size-sm;
+	color: $black-color;
+	height: 48px;
+	width: $full-width;
+	border: 1px solid #a9b1bc;
+	@include padding(12px);
+	@extend %box-size--border-box;
+	border-radius: $border-radius-xl;
+
+	&::placeholder {
+		color: #a9b1bc;
+	}
+
+  .PhoneInputInput {
+		width: calc(#{$full-width} - 58px);
+		height: $full-height;
+		background-color: $white-color;
+		font-size: 0.875rem;
+		border: none;
+		outline: none;
+		@include padding(12px);
+		border-radius: $border-radius-xl;
+	}
+}
+
+.react-datetime-picker__wrapper {
+  background-color: transparent;
+	font-size: $font-size-sm;
+	color: $black-color;
+	height: 48px;
+	width: $full-width;
+	border: 1px solid #a9b1bc;
+	@include padding(12px);
+	@extend %box-size--border-box;
+	border-radius: $border-radius-xl;
+}
+
+.react-datetime-picker__inputGroup__input:invalid{
+  background-color: transparent !important;
 }

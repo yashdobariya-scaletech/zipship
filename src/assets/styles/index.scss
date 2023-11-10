@@ -1,5 +1,47 @@
 .basic-form {
   .form-item {
-    padding: 10px;
+    @include marginBottom(8px);
   }
+}
+
+.order-heading{
+  color: #0e78d8;
+}
+
+.form__submit {
+  background-color: #0e78d8;
+  border-radius:  $border-radius-xl;
+  height: 48px;
+  width: 120px;
+  border: none;
+  font-size: 16px;
+
+}
+
+.sender-wrapper,.deliver-wrapper {
+  border-radius: $border-radius-xxl;
+}
+
+.collapse-box-wrapper {
+	.collapse-arrow {
+		width: 44px;
+		min-width: 44px;
+		height: 44px;
+
+		.icon {
+			width: 24px;
+      height: 24px;
+      fill: $black-color;
+			transition: all 0.2s linear;
+		}
+
+		&.expand {
+			// background-color: $black;
+      
+
+			.icon {
+				transform: rotate(180deg);
+			}
+		}
+	}
 }

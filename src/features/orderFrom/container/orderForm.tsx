@@ -1,5 +1,5 @@
-import Form from '../component/form';
 import Logo from '../../../assets/images/zip-ship.png';
+import DataForm from '../component/form';
 
 const OrderForm: React.FC = () => {
   return (
@@ -11,11 +11,14 @@ const OrderForm: React.FC = () => {
             alt="Not Found"
             className="width--60 height--60 object-fit--contain"
           />
-          <h1 className="font-size--28 line-height--40">Order Form</h1>
+          <h1 className="zip-ship-heading font-size--28 line-height--40">
+            Zip Ship
+          </h1>
         </div>
       </div>
       <hr className="border--grey-100" />
-      <Form />
+
+      <DataForm />
     </div>
   );
 };

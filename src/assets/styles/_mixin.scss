@@ -37,3 +37,16 @@
 @mixin paddingRight($value) {
   padding-right: $value;
 }
+
+
+@mixin getShadesColorClasses($colors, $property, $isImportant: '') {
+	@each $key, $value in $colors {
+		&-#{$key} {
+			@if $isImportant== 'important' {
+				#{$property}: $value !important;
+			} @else {
+				#{$property}: $value;
+			}
+		}
+	}
+}

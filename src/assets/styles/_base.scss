@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  // @include margin(0);
+  @include margin(0);
   // @include padding(0);
   color: $black-color;
   background-color: getColor($grey, 25);
@@ -185,7 +185,7 @@ h4,
 h5,
 h6,
 p {
-  // @include margin(0);
+  @include margin(0);
 }
 
 video {
