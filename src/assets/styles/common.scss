@@ -248,8 +248,20 @@
   color: $white-color;
 }
 
+.ml--20 {
+  @include marginLeft(20px);
+}
+
+.mr--15 {
+  @include marginRight(15px);
+}
+
 .mt--5 {
   @include marginTop(5px);
+}
+
+.mt--10 {
+  @include marginTop(10px);
 }
 
 .mb--5 {
@@ -300,6 +312,26 @@
 		outline: none;
 		@include padding(12px);
 		border-radius: $border-radius-xl;
+	}
+
+  &--select__control {
+		height: 48px;
+		-moz-appearance: none;
+		/* Firefox */
+		-webkit-appearance: none;
+		/* Safari and Chrome */
+		appearance: none;
+		background: white;
+	  border-radius: $border-radius-xl !important;
+    border: 1px solid #a9b1bc !important;
+		box-shadow: none;
+		@include padding(0 8px);
+	}
+
+  &--select {
+		background-color: transparent;
+		padding: 0;
+		border: none;
 	}
 }
 
