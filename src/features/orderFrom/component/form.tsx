@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import {
+  Controller,
+  SubmitHandler,
+  useFieldArray,
+  useForm,
+} from 'react-hook-form';
 import PhoneInput from 'react-phone-number-input';
 import DateTimePicker from 'react-datetime-picker';
 import 'react-datetime-picker/dist/DateTimePicker.css';
@@ -14,6 +19,7 @@ import { InputSelect } from '../../../shared/components/inputSelect/inputSelect'
 import {
   ClientOptions,
   CountryOptions,
+  ItemsPieceProps,
   ParcelTypeOptions,
   ServiceTypeOptions,
   StateOptions,
@@ -46,6 +52,7 @@ interface IFormInput {
   deliveryState: any;
   deliveryCountry: any;
   deliveryCompanyName: string;
+  items: ItemsPieceProps[];
 }
 const DataForm: React.FC = () => {
   const {
@@ -53,8 +60,11 @@ const DataForm: React.FC = () => {
     formState: { errors },
     handleSubmit,
     control,
-    watch,
+    setValue,
   } = useForm<IFormInput>();
+
+  const { fields, remove, append } = useFieldArray({ control, name: 'items' });
+
   const onSubmit: SubmitHandler<IFormInput> = (data) =>
     console.log('Data', data);
 
@@ -72,6 +82,7 @@ const DataForm: React.FC = () => {
       randomString += characters.charAt(randomIndex);
     }
     setRandomKeyGenerate(randomString);
+    setValue('referenceNumber', randomString);
   };
 
   useEffect(() => {
@@ -168,26 +179,16 @@ const DataForm: React.FC = () => {
               <Controller
                 name="referenceNumber"
                 control={control}
-                // rules={{ required: true }}
-                render={({ field }) => (
+                rules={{ required: true }}
+                render={({ field: { value } }) => (
                   <div className="flex align-items--center">
                     <input
                       className="form__input"
-                      disabled
-                      // {...register('referenceNumber')}
-                      value={randomKeyGenerate}
+                      readOnly
+                      {...register('referenceNumber')}
                       name="referenceNumber"
                       placeholder="Shipment Reference Number"
                     />
-                    {/* <FormInputField
-                      type="text"
-                      title=""
-                      register={register}
-                      name="referenceNumber"
-                      placeholder="Shipment Reference Number"
-                      disabled={true}
-                      value={randomKeyGenerate}
-                    /> */}
                     <button
                       type="button"
                       className="ml--20 form__submit font--bold text--white"
@@ -199,9 +200,9 @@ const DataForm: React.FC = () => {
                 )}
               />
 
-              {/* {errors.referenceNumber && (
+              {errors.referenceNumber && (
                 <ErrorMessage name="Reference number is required" />
-              )} */}
+              )}
             </div>
             <div className="form-item">
               <FormInputField
@@ -215,55 +216,82 @@ const DataForm: React.FC = () => {
                 <ErrorMessage name="Items name is required" />
               )}
             </div>
-            <div className="form-item">
-              <FormInputField
-                type="number"
-                title="Pieces"
-                register={register}
-                name="pieces"
-                placeholder="Pieces"
-              />
-            </div>
-            <div className="form-item">
-              <FormInputField
-                type="number"
-                title="Weight"
-                register={register}
-                name="weight"
-                placeholder="Weight"
-              />
-            </div>
-            <div className="form-item flex align-items--center justify-content--between">
-              <div className="width--full mr--15">
-                <p className="mb--5 font--bold">Length</p>
-                <FormInputField
-                  type="number"
-                  title=""
-                  register={register}
-                  name="length"
-                  placeholder="Length"
-                />
-              </div>
-              <div className="width--full mr--15">
-                <p className="mb--5 font--bold">Width</p>
-                <FormInputField
-                  type="number"
-                  title=""
-                  register={register}
-                  name="width"
-                  placeholder="width"
-                />
-              </div>
-              <div className="width--full">
-                <p className="mb--5 font--bold">Height</p>
-                <FormInputField
-                  type="number"
-                  title=""
-                  register={register}
-                  name="height"
-                  placeholder="height"
-                />
-              </div>
+            <div>
+              {fields.map((field, index) => (
+                <div key={field.id}>
+                  <div className="form-item flex align-items--center justify-content--between mt--5">
+                    <div className="width--full mr--15">
+                      <p className="font--bold mb--5">Piece</p>
+                      <input
+                        type="number"
+                        className="form__input mb--5"
+                        key={field.id}
+                        {...register(`items.${index}.Piece`)}
+                      />
+                    </div>
+                    <div className="width--full">
+                      <p className="font--bold mb--5">Weight</p>
+                      <input
+                        type="number"
+                        className="form__input"
+                        key={field.id}
+                        {...register(`items.${index}.Weight`)}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-item flex align-items--center justify-content--between mt--5">
+                    <div className="width--full mr--15">
+                      <p className="font--bold mb--5">Length</p>
+                      <input
+                        type="number"
+                        className="form__input"
+                        key={field.id}
+                        {...register(`items.${index}.Length`)}
+                      />
+                    </div>
+                    <div className="width--full mr--15">
+                      <p className="font--bold mb--5">Width</p>
+                      <input
+                        type="number"
+                        className="form__input"
+                        key={field.id}
+                        {...register(`items.${index}.Width`)}
+                      />
+                    </div>
+                    <div className="width--full mr--15">
+                      <p className="font--bold mb--5">Height</p>
+                      <input
+                        type="number"
+                        className="form__input"
+                        key={field.id}
+                        {...register(`items.${index}.Height`)}
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      className="remove__btn font--bold text--white"
+                      onClick={() => remove(index)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+              <button
+                type="button"
+                className="add-item__btn font--bold text--white"
+                onClick={() =>
+                  append({
+                    Piece: null,
+                    Weight: null,
+                    Height: null,
+                    Width: null,
+                    Length: null,
+                  })
+                }
+              >
+                Add Item
+              </button>
             </div>
           </CollapseBox>
         </div>
@@ -393,7 +421,6 @@ const DataForm: React.FC = () => {
                 <ErrorMessage name="Phone number is required" />
               )}
             </div>
-
             <div className="form-item">
               <p className="mb--5 font--bold">Email</p>
               <input
@@ -401,28 +428,15 @@ const DataForm: React.FC = () => {
                 className="form__input"
                 placeholder="Sender Email"
                 {...register('senderEmail', {
-                  required: 'Sender email is required',
+                  required: false,
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                     message: 'invalid email address',
                   },
                 })}
               />
-              {/* {errors.senderEmail?.message && (
+              {errors.senderEmail?.message && (
                 <ErrorMessage name={errors.senderEmail?.message} />
-              )} */}
-            </div>
-
-            <div className="form-item">
-              <FormInputField
-                type="text"
-                title="Items Name"
-                register={register}
-                name="itemsName"
-                placeholder="Items Name"
-              />
-              {errors.itemsName && (
-                <ErrorMessage name="Items name is required" />
               )}
             </div>
           </CollapseBox>
@@ -524,7 +538,7 @@ const DataForm: React.FC = () => {
                 className="form__input"
                 placeholder="Deliver Email"
                 {...register('deliverEmail', {
-                  required: 'Deliver email is required',
+                  required: false,
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                     message: 'invalid email address',

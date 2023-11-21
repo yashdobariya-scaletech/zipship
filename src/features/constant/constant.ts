@@ -60,3 +60,11 @@ export const CountryOptions = [
   { label: 'Canada', value: 'Canada' },
   { label: 'United States of America', value: 'United States of America' },
 ];
+
+export interface ItemsPieceProps {
+  Piece: number | null;
+  Weight: number | null;
+  Height: number | null;
+  Width: number | null;
+  Length: number | null;
+}

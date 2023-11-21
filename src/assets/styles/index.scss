@@ -18,6 +18,25 @@
 
 }
 
+.remove__btn {
+  background-color: red;
+  border-radius:  $border-radius-xl;
+  height: 48px;
+  width: 150px;
+  border: none;
+  font-size: 16px;
+}
+
+.add-item__btn{
+	background-color: #0e78d8;
+	border-radius:  $border-radius-xl;
+	height: 48px;
+	width: 120px;
+	border: none;
+	font-size: 16px;
+	@include marginTop(15px);
+}
+
 .sender-wrapper,.deliver-wrapper,.detail-wrapper {
   border-radius: $border-radius-xxl;
 }
