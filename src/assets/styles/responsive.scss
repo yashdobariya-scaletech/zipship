@@ -1,33 +1,54 @@
-@media only screen and (max-width:768px) {
-    .order-heading{
-        font-size: 24px;
-        line-height: 32px;
-    }
+@media only screen and (max-width: 768px) {
+  .order-heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
 
-    .zip-ship-heading{
-        font-size: 18px;
-        line-height: 24px;
-    }
+  .zip-ship-heading {
+    font-size: 18px;
+    line-height: 24px;
+  }
 
-    .collapse-title{
-        font-size: 1.25rem;
-        line-height: 28px;
-    }
+  .collapse-title {
+    font-size: 1.25rem;
+    line-height: 28px;
+  }
 }
 
-@media only screen and (max-width:468px) {
-    .order-heading{
-        font-size: 20px;
-        line-height: 28px;
-    }
+@media only screen and (max-width: 468px) {
+  .order-heading {
+    font-size: 20px;
+    line-height: 28px;
+  }
 
-    .zip-ship-heading{
-        font-size: 16px;
-        line-height: 24px;
-    }
+  .zip-ship-heading {
+    font-size: 16px;
+    line-height: 24px;
+  }
 
-    .collapse-title{
-        font-size: 1rem;
-        line-height: 28px;
+  .collapse-title {
+    font-size: 1rem;
+    line-height: 28px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .reference-number {
+    flex-direction: column;
+
+    button {
+      margin-top: 10px;
     }
+  }
+  .multi-items {
+    flex-direction: column;
+    .piece {
+      margin-right: 0pc;
+    }
+  }
+  .form-item {
+    button {
+      min-width: 10px;
+    }
+  }
 }

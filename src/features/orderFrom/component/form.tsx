@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
+import DateTimePicker from "react-datetime-picker";
+import "react-datetime-picker/dist/DateTimePicker.css";
 import {
   Controller,
   SubmitHandler,
   useFieldArray,
   useForm,
-} from 'react-hook-form';
-import PhoneInput from 'react-phone-number-input';
-import DateTimePicker from 'react-datetime-picker';
-import 'react-datetime-picker/dist/DateTimePicker.css';
-import 'react-phone-number-input/style.css';
-import 'react-calendar/dist/Calendar.css';
-import 'react-clock/dist/Clock.css';
-import CollapseBox from '../../../shared/components/collapseBox/collapseBox';
-import ErrorMessage from '../../../shared/components/errorBoundary/errorMessage';
-import { PersonInformation } from '../../../shared/enum/enum';
-import { FormInputField } from './formInputField';
-import { InputSelect } from '../../../shared/components/inputSelect/inputSelect';
+} from "react-hook-form";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import CollapseBox from "../../../shared/components/collapseBox/collapseBox";
+import ErrorMessage from "../../../shared/components/errorBoundary/errorMessage";
+import { InputSelect } from "../../../shared/components/inputSelect/inputSelect";
+import { PersonInformation } from "../../../shared/enum/enum";
 import {
   ClientOptions,
   CountryOptions,
@@ -23,7 +22,8 @@ import {
   ParcelTypeOptions,
   ServiceTypeOptions,
   StateOptions,
-} from '../../constant/constant';
+} from "../../constant/constant";
+import { FormInputField } from "./formInputField";
 
 interface IFormInput {
   senderAddress: string;
@@ -63,53 +63,53 @@ const DataForm: React.FC = () => {
     setValue,
   } = useForm<IFormInput>();
 
-  const { fields, remove, append } = useFieldArray({ control, name: 'items' });
+  const { fields, remove, append } = useFieldArray({ control, name: "items" });
 
   const onSubmit: SubmitHandler<IFormInput> = (data) =>
-    console.log('Data', data);
+    console.log("Data", data);
 
   const [sectionExpand, setSectionExpand] = useState(
     PersonInformation.ClientDetails as string
   );
 
-  const [randomKeyGenerate, setRandomKeyGenerate] = useState('');
+  const [randomKeyGenerate, setRandomKeyGenerate] = useState("");
   const generateRandomString = (length: number) => {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let randomString = '';
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let randomString = "";
 
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       randomString += characters.charAt(randomIndex);
     }
     setRandomKeyGenerate(randomString);
-    setValue('referenceNumber', randomString);
+    setValue("referenceNumber", randomString);
   };
 
   useEffect(() => {
-    register('referenceNumber', randomKeyGenerate as any);
+    register("referenceNumber", randomKeyGenerate as any);
   }, [register, randomKeyGenerate]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex--column basic-form container">
-        <h1 className="order-heading font--bold font-size--32 line-height--48 text--center mb--24">
+      <div className='flex flex--column basic-form container'>
+        <h1 className='order-heading font--bold font-size--32 line-height--48 text--center mb--24'>
           Delivery Site
         </h1>
-        <div className="detail-wrapper border--grey-500 mb--24 padding--16">
+        <div className='detail-wrapper border--grey-500 mb--24 padding--16'>
           <CollapseBox
             sectionExpand={sectionExpand}
             setSectionExpand={setSectionExpand}
-            title={'Client Details'}
+            title={"Client Details"}
           >
-            <div className="form-item mt--5">
+            <div className='form-item mt--5'>
               <Controller
-                name="client"
+                name='client'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
-                    label="Client"
-                    fieldName="client"
+                    label='Client'
+                    fieldName='client'
                     onChange={onChange}
                     options={ClientOptions}
                     selectedValue={value}
@@ -117,18 +117,18 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.client && (
-                <ErrorMessage name={'Please add date and time'} />
+                <ErrorMessage name={"Please add date and time"} />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <Controller
-                name="serviceType"
+                name='serviceType'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
-                    label="Service Type"
-                    fieldName="serviceType"
+                    label='Service Type'
+                    fieldName='serviceType'
                     onChange={onChange}
                     options={ServiceTypeOptions}
                     selectedValue={value}
@@ -136,34 +136,34 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.serviceType && (
-                <ErrorMessage name={'Please add date and time'} />
+                <ErrorMessage name={"Please add date and time"} />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <Controller
-                name="requestedDate"
+                name='requestedDate'
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
                   <>
-                    <p className="mb--5 font--bold">Date And Time</p>
-                    <DateTimePicker className={'width--full'} {...field} />
+                    <p className='mb--5 font--bold'>Date And Time</p>
+                    <DateTimePicker className={"width--full"} {...field} />
                   </>
                 )}
               />
               {errors.requestedDate && (
-                <ErrorMessage name={'Please add date and time'} />
+                <ErrorMessage name={"Please add date and time"} />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <Controller
-                name="parcelType"
+                name='parcelType'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
-                    label="Parcel Type"
-                    fieldName="parcelType"
+                    label='Parcel Type'
+                    fieldName='parcelType'
                     onChange={onChange}
                     options={ParcelTypeOptions}
                     selectedValue={value}
@@ -171,27 +171,27 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.parcelType && (
-                <ErrorMessage name={'Please add date and time'} />
+                <ErrorMessage name={"Please add date and time"} />
               )}
             </div>
-            <div className="form-item">
-              <p className="mb--5 font--bold">Shipment Reference Number</p>
+            <div className='form-item'>
+              <p className='mb--5 font--bold'>Shipment Reference Number</p>
               <Controller
-                name="referenceNumber"
+                name='referenceNumber'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value } }) => (
-                  <div className="flex align-items--center">
+                  <div className='reference-number flex align-items--center'>
                     <input
-                      className="form__input"
+                      className='form__input'
                       readOnly
-                      {...register('referenceNumber')}
-                      name="referenceNumber"
-                      placeholder="Shipment Reference Number"
+                      {...register("referenceNumber")}
+                      name='referenceNumber'
+                      placeholder='Shipment Reference Number'
                     />
                     <button
-                      type="button"
-                      className="ml--20 form__submit font--bold text--white"
+                      type='button'
+                      className='ml--20 form__submit font--bold text--white'
                       onClick={() => generateRandomString(15)}
                     >
                       Random No.
@@ -201,75 +201,82 @@ const DataForm: React.FC = () => {
               />
 
               {errors.referenceNumber && (
-                <ErrorMessage name="Reference number is required" />
+                <ErrorMessage name='Reference number is required' />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="text"
-                title="Items Name"
+                type='text'
+                title='Items Name'
                 register={register}
-                name="itemsName"
-                placeholder="Items Name"
+                name='itemsName'
+                placeholder='Items Name'
               />
               {errors.itemsName && (
-                <ErrorMessage name="Items name is required" />
+                <ErrorMessage name='Items name is required' />
               )}
             </div>
             <div>
               {fields.map((field, index) => (
-                <div key={field.id}>
-                  <div className="form-item flex align-items--center justify-content--between mt--5">
-                    <div className="width--full mr--15">
-                      <p className="font--bold mb--5">Piece</p>
-                      <input
-                        type="number"
-                        className="form__input mb--5"
-                        key={field.id}
-                        {...register(`items.${index}.Piece`)}
-                      />
+                <div
+                  key={field.id}
+                  className='multi-items flex align-items--center justify-content--between  mt--10'
+                >
+                  <div className='piece mr--15'>
+                    <div className='form-item flex align-items--center justify-content--between mt--5'>
+                      <div className='width--full mr--15'>
+                        <p className='font--bold mb--5'>Piece</p>
+                        <input
+                          type='number'
+                          className='form__input mb--5'
+                          key={field.id}
+                          {...register(`items.${index}.Piece`)}
+                        />
+                      </div>
+                      <div className='width--full'>
+                        <p className='font--bold mb--5'>Weight</p>
+                        <input
+                          type='number'
+                          className='form__input'
+                          key={field.id}
+                          {...register(`items.${index}.Weight`)}
+                        />
+                      </div>
                     </div>
-                    <div className="width--full">
-                      <p className="font--bold mb--5">Weight</p>
-                      <input
-                        type="number"
-                        className="form__input"
-                        key={field.id}
-                        {...register(`items.${index}.Weight`)}
-                      />
+                    <div className='form-item flex align-items--center justify-content--between mt--5'>
+                      <div className='width--full mr--15'>
+                        <p className='font--bold mb--5'>Length</p>
+                        <input
+                          type='number'
+                          className='form__input'
+                          key={field.id}
+                          {...register(`items.${index}.Length`)}
+                        />
+                      </div>
+                      <div className='width--full mr--15'>
+                        <p className='font--bold mb--5'>Width</p>
+                        <input
+                          type='number'
+                          className='form__input'
+                          key={field.id}
+                          {...register(`items.${index}.Width`)}
+                        />
+                      </div>
+                      <div className='width--full mr--15'>
+                        <p className='font--bold mb--5'>Height</p>
+                        <input
+                          type='number'
+                          className='form__input'
+                          key={field.id}
+                          {...register(`items.${index}.Height`)}
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="form-item flex align-items--center justify-content--between mt--5">
-                    <div className="width--full mr--15">
-                      <p className="font--bold mb--5">Length</p>
-                      <input
-                        type="number"
-                        className="form__input"
-                        key={field.id}
-                        {...register(`items.${index}.Length`)}
-                      />
-                    </div>
-                    <div className="width--full mr--15">
-                      <p className="font--bold mb--5">Width</p>
-                      <input
-                        type="number"
-                        className="form__input"
-                        key={field.id}
-                        {...register(`items.${index}.Width`)}
-                      />
-                    </div>
-                    <div className="width--full mr--15">
-                      <p className="font--bold mb--5">Height</p>
-                      <input
-                        type="number"
-                        className="form__input"
-                        key={field.id}
-                        {...register(`items.${index}.Height`)}
-                      />
-                    </div>
+                  <div>
                     <button
-                      type="button"
-                      className="remove__btn font--bold text--white"
+                      type='button'
+                      className='remove__btn font--bold text--white'
                       onClick={() => remove(index)}
                     >
                       Remove
@@ -278,8 +285,8 @@ const DataForm: React.FC = () => {
                 </div>
               ))}
               <button
-                type="button"
-                className="add-item__btn font--bold text--white"
+                type='button'
+                className='add-item__btn font--bold text--white'
                 onClick={() =>
                   append({
                     Piece: null,
@@ -295,11 +302,11 @@ const DataForm: React.FC = () => {
             </div>
           </CollapseBox>
         </div>
-        <div className="sender-wrapper border--grey-500 mb--24 padding--16">
+        <div className='sender-wrapper border--grey-500 mb--24 padding--16'>
           <CollapseBox
             sectionExpand={sectionExpand}
             setSectionExpand={setSectionExpand}
-            title={'Sender Information'}
+            title={"Sender Information"}
           >
             {/* <div className="form-item mt--5">
               <Controller
@@ -317,61 +324,61 @@ const DataForm: React.FC = () => {
                 <ErrorMessage name={'Please add date and time'} />
               )}
             </div> */}
-            <div className="form-item mt--5">
+            <div className='form-item mt--5'>
               <FormInputField
-                type="text"
-                title="Company"
+                type='text'
+                title='Company'
                 register={register}
-                name="senderCompanyName"
-                placeholder="Company"
+                name='senderCompanyName'
+                placeholder='Company'
               />
               {errors.senderCompanyName && (
-                <ErrorMessage name="Company name is required" />
+                <ErrorMessage name='Company name is required' />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="text"
-                title="Address"
+                type='text'
+                title='Address'
                 register={register}
-                name="senderAddress"
-                placeholder="Address"
+                name='senderAddress'
+                placeholder='Address'
               />
               {errors.senderAddress && (
-                <ErrorMessage name="Address is required" />
+                <ErrorMessage name='Address is required' />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="text"
-                title="City"
+                type='text'
+                title='City'
                 register={register}
-                name="senderCity"
-                placeholder="City"
+                name='senderCity'
+                placeholder='City'
               />
-              {errors.senderCity && <ErrorMessage name="City is required" />}
+              {errors.senderCity && <ErrorMessage name='City is required' />}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="number"
-                title="Postal Code/ZIP"
+                type='number'
+                title='Postal Code/ZIP'
                 register={register}
-                name="senderZipCode"
-                placeholder="Postal Code/ZIP"
+                name='senderZipCode'
+                placeholder='Postal Code/ZIP'
               />
               {errors.senderZipCode && (
-                <ErrorMessage name="Zip code number is required" />
+                <ErrorMessage name='Zip code number is required' />
               )}
             </div>
-            <div className="form-item mt--5">
+            <div className='form-item mt--5'>
               <Controller
-                name="senderState"
+                name='senderState'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
-                    label="State"
-                    fieldName="senderState"
+                    label='State'
+                    fieldName='senderState'
                     onChange={onChange}
                     options={StateOptions}
                     selectedValue={value}
@@ -379,18 +386,18 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.senderState && (
-                <ErrorMessage name={'State is required'} />
+                <ErrorMessage name={"State is required"} />
               )}
             </div>
-            <div className="form-item mt--5">
+            <div className='form-item mt--5'>
               <Controller
-                name="senderCountry"
+                name='senderCountry'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
-                    label="Country"
-                    fieldName="senderCountry"
+                    label='Country'
+                    fieldName='senderCountry'
                     onChange={onChange}
                     options={CountryOptions}
                     selectedValue={value}
@@ -398,19 +405,19 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.senderCountry && (
-                <ErrorMessage name={'Country is required'} />
+                <ErrorMessage name={"Country is required"} />
               )}
             </div>
-            <div className="form-item">
-              <p className="mb--5 font--bold">Phone Number</p>
+            <div className='form-item'>
+              <p className='mb--5 font--bold'>Phone Number</p>
               <Controller
-                name="senderPhone"
+                name='senderPhone'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <PhoneInput
-                    className="form__input"
-                    defaultCountry="US"
+                    className='form__input'
+                    defaultCountry='US'
                     international
                     onChange={onChange}
                     value={value}
@@ -418,20 +425,20 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.senderPhone && (
-                <ErrorMessage name="Phone number is required" />
+                <ErrorMessage name='Phone number is required' />
               )}
             </div>
-            <div className="form-item">
-              <p className="mb--5 font--bold">Email</p>
+            <div className='form-item'>
+              <p className='mb--5 font--bold'>Email</p>
               <input
-                type="email"
-                className="form__input"
-                placeholder="Sender Email"
-                {...register('senderEmail', {
+                type='email'
+                className='form__input'
+                placeholder='Sender Email'
+                {...register("senderEmail", {
                   required: false,
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'invalid email address',
+                    message: "invalid email address",
                   },
                 })}
               />
@@ -441,67 +448,67 @@ const DataForm: React.FC = () => {
             </div>
           </CollapseBox>
         </div>
-        <div className="deliver-wrapper border--grey-500 padding--16 mb--24">
+        <div className='deliver-wrapper border--grey-500 padding--16 mb--24'>
           <CollapseBox
             sectionExpand={sectionExpand}
             setSectionExpand={setSectionExpand}
-            title={'Delivery Information'}
+            title={"Delivery Information"}
           >
-            <div className="form-item mt--5">
+            <div className='form-item mt--5'>
               <FormInputField
-                type="text"
-                title="Delivery Company Name"
+                type='text'
+                title='Delivery Company Name'
                 register={register}
-                name="deliveryCompanyName"
-                placeholder="Contact Name"
+                name='deliveryCompanyName'
+                placeholder='Contact Name'
               />
               {errors.deliveryCompanyName && (
-                <ErrorMessage name="Contact name is required" />
+                <ErrorMessage name='Contact name is required' />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="text"
-                title="Address"
+                type='text'
+                title='Address'
                 register={register}
-                name="deliveryAddress"
-                placeholder="Address"
+                name='deliveryAddress'
+                placeholder='Address'
               />
               {errors.deliveryAddress && (
-                <ErrorMessage name="Address is required" />
+                <ErrorMessage name='Address is required' />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="text"
-                title="City"
+                type='text'
+                title='City'
                 register={register}
-                name="deliveryCity"
-                placeholder="City"
+                name='deliveryCity'
+                placeholder='City'
               />
-              {errors.deliveryCity && <ErrorMessage name="City is required" />}
+              {errors.deliveryCity && <ErrorMessage name='City is required' />}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="number"
-                title="Postal Code/ZIP"
+                type='number'
+                title='Postal Code/ZIP'
                 register={register}
-                name="deliveryZipCode"
-                placeholder="Postal Code/ZIP"
+                name='deliveryZipCode'
+                placeholder='Postal Code/ZIP'
               />
               {errors.deliveryZipCode && (
-                <ErrorMessage name="Zip code number is required" />
+                <ErrorMessage name='Zip code number is required' />
               )}
             </div>
-            <div className="form-item mt--5">
+            <div className='form-item mt--5'>
               <Controller
-                name="deliveryState"
+                name='deliveryState'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
-                    label="State"
-                    fieldName="deliveryState"
+                    label='State'
+                    fieldName='deliveryState'
                     onChange={onChange}
                     options={StateOptions}
                     selectedValue={value}
@@ -509,18 +516,18 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.deliveryState && (
-                <ErrorMessage name={'State is required'} />
+                <ErrorMessage name={"State is required"} />
               )}
             </div>
-            <div className="form-item mt--5">
+            <div className='form-item mt--5'>
               <Controller
-                name="deliveryCountry"
+                name='deliveryCountry'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
-                    label="Country"
-                    fieldName="deliveryCountry"
+                    label='Country'
+                    fieldName='deliveryCountry'
                     onChange={onChange}
                     options={CountryOptions}
                     selectedValue={value}
@@ -528,20 +535,20 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.deliveryCountry && (
-                <ErrorMessage name={'Country is required'} />
+                <ErrorMessage name={"Country is required"} />
               )}
             </div>
-            <div className="form-item">
-              <p className="mb--5 font--bold">Email</p>
+            <div className='form-item'>
+              <p className='mb--5 font--bold'>Email</p>
               <input
-                type="email"
-                className="form__input"
-                placeholder="Deliver Email"
-                {...register('deliverEmail', {
+                type='email'
+                className='form__input'
+                placeholder='Deliver Email'
+                {...register("deliverEmail", {
                   required: false,
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'invalid email address',
+                    message: "invalid email address",
                   },
                 })}
               />
@@ -563,16 +570,16 @@ const DataForm: React.FC = () => {
               />
               {errors.deliverDateAndTime && <ErrorMessage name={"Please add date and time"} />}
             </div> */}
-            <div className="form-item">
-              <p className="mb--5 font--bold">Phone Number</p>
+            <div className='form-item'>
+              <p className='mb--5 font--bold'>Phone Number</p>
               <Controller
-                name="deliverPhone"
+                name='deliverPhone'
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <PhoneInput
-                    className="form__input"
-                    defaultCountry="US"
+                    className='form__input'
+                    defaultCountry='US'
                     international
                     onChange={onChange}
                     value={value}
@@ -580,25 +587,25 @@ const DataForm: React.FC = () => {
                 )}
               />
               {errors.deliverPhone && (
-                <ErrorMessage name="Phone number is required" />
+                <ErrorMessage name='Phone number is required' />
               )}
             </div>
-            <div className="form-item">
+            <div className='form-item'>
               <FormInputField
-                type="text"
-                title="Location"
+                type='text'
+                title='Location'
                 register={register}
-                name="deliverLocation"
-                placeholder="Deliver Location"
+                name='deliverLocation'
+                placeholder='Deliver Location'
               />
               {errors.deliverLocation && (
-                <ErrorMessage name="Location is required" />
+                <ErrorMessage name='Location is required' />
               )}
             </div>
           </CollapseBox>
         </div>
-        <div className="form-item">
-          <button className="form__submit font--bold text--white" type="submit">
+        <div className='form-item'>
+          <button className='form__submit font--bold text--white' type='submit'>
             Submit
           </button>
         </div>
