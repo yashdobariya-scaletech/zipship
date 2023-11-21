@@ -1,4 +1,8 @@
 @media only screen and (max-width: 768px) {
+  .detail-wrapper, .sender-wrapper ,.deliver-wrapper{
+     @include padding(12px);
+  }
+
   .order-heading {
     font-size: 24px;
     line-height: 32px;
@@ -15,21 +19,29 @@
   }
 }
 
-@media only screen and (max-width: 468px) {
-  .order-heading {
-    font-size: 20px;
-    line-height: 28px;
-  }
+@media only screen and (max-width: 568px) {
+  .detail-wrapper,.sender-wrapper,.deliver-wrapper{
+    @include padding(10px);
+ }
 
-  .zip-ship-heading {
-    font-size: 16px;
-    line-height: 24px;
-  }
+ .form__input{
+  height: 42px;
 
-  .collapse-title {
-    font-size: 1rem;
-    line-height: 28px;
+  &--select__control{
+    height: 42px;
   }
+ }
+
+ .react-datetime-picker__wrapper{
+  height: 42px;
+  @include padding(8px);
+ }
+
+ .form__submit ,.remove__btn,.add-item__btn{
+    height: 42px !important;
+    font-size: 14px !important;
+ }
+
 }
 
 @media only screen and (max-width: 500px) {
@@ -53,3 +65,22 @@
     }
   }
 }
+
+@media only screen and (max-width: 468px) {
+  .order-heading {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .zip-ship-heading {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .collapse-title {
+    font-size: 1rem;
+    line-height: 28px;
+  }
+}
+
+

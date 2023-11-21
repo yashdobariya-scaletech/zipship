@@ -298,9 +298,9 @@
 	@include padding(12px);
 	@extend %box-size--border-box;
 	border-radius: $border-radius-xl;
-
+  
 	&::placeholder {
-		color: #a9b1bc;
+    color: #a9b1bc;
 	}
 
   .PhoneInputInput {
@@ -325,6 +325,7 @@
 	  border-radius: $border-radius-xl !important;
     border: 1px solid #a9b1bc !important;
 		box-shadow: none;
+    cursor: pointer !important;
 		@include padding(0 8px);
 	}
 

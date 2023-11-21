@@ -62,9 +62,11 @@ export const CountryOptions = [
 ];
 
 export interface ItemsPieceProps {
-  Piece: number | null;
+  NumberOfPieces: number | null;
   Weight: number | null;
   Height: number | null;
   Width: number | null;
   Length: number | null;
+  description: string;
+  price: number | null;
 }
