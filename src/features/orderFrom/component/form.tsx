@@ -8,6 +8,8 @@ import {
 } from 'react-hook-form';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import 'react-datepicker/dist/react-datepicker.css';
+
 import CollapseBox from '../../../shared/components/collapseBox/collapseBox';
 import ErrorMessage from '../../../shared/components/errorBoundary/errorMessage';
 import { InputSelect } from '../../../shared/components/inputSelect/inputSelect';
@@ -118,18 +120,15 @@ const DataForm: React.FC = () => {
                   name="client"
                   control={control}
                   rules={{ required: true }}
-                  render={({ field: { onChange, value } }) => {
-                    console.log('value:', value);
-                    return (
-                      <InputSelect
-                        label="Client"
-                        fieldName="client"
-                        onChange={onChange}
-                        options={ClientOptions}
-                        selectedValue={value}
-                      />
-                    );
-                  }}
+                  render={({ field: { onChange, value } }) => (
+                    <InputSelect
+                      label="Client"
+                      fieldName="client"
+                      onChange={onChange}
+                      options={ClientOptions}
+                      selectedValue={value}
+                    />
+                  )}
                 />
                 {errors.client && (
                   <ErrorMessage name={'Please add date and time'} />
