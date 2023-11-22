@@ -276,6 +276,10 @@
   @include marginBottom(16px);
 }
 
+.mb--20 {
+  @include marginBottom(20px !important);
+}
+
 .mb--24 {
   @include marginBottom(24px);
 }
@@ -336,18 +340,6 @@
 	}
 }
 
-.react-datetime-picker__wrapper {
-  background-color: transparent;
-	font-size: $font-size-sm;
-	color: $black-color;
-	height: 48px;
-	width: $full-width;
-	border: 1px solid #a9b1bc;
-	@include padding(12px);
-	@extend %box-size--border-box;
-	border-radius: $border-radius-xl;
-}
-
-.react-datetime-picker__inputGroup__input:invalid{
-  background-color: transparent !important;
+.react-datepicker-wrapper{
+  width: $full-width;
 }

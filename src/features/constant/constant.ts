@@ -49,6 +49,7 @@ export const StateOptions = [
     value: 'Atlanta',
   },
   { label: 'New York', value: 'New York' },
+  { label: 'Georgia', value: 'Georgia' },
 ];
 
 export const CountryOptions = [
