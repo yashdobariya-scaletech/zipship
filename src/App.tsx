@@ -1,9 +1,9 @@
-import OrderForm from './features/orderFrom/container/orderForm';
-import '../src/assets/styles/app.scss';
+import "../src/assets/styles/app.scss";
+import OrderForm from "./features/orderFrom/container/orderForm";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <OrderForm />
     </div>
   );
