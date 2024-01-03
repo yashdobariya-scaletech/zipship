@@ -49,7 +49,7 @@ interface IFormInput {
   Delivery_Company: string;
   Items: ItemsPieceProps[];
   attention: string;
-  detailDescription: string;
+  JobDescription: string;
 }
 
 interface DropDownProps {
@@ -69,6 +69,9 @@ const DataForm: React.FC = () => {
     defaultValues: {
       Items: [
         {
+          Barcode: "",
+          UnitOfMeasure: "k",
+          UnitOfMeasureLength: "",
           Piece: null,
           Weight: null,
           Height: null,
@@ -76,6 +79,7 @@ const DataForm: React.FC = () => {
           Length: null,
           Description: "",
           Price: null,
+          AlternateBarcode: "",
         },
       ],
     },
@@ -89,82 +93,80 @@ const DataForm: React.FC = () => {
     if (data) {
       const payload = {
         shipments: [
-          // {
-          //   BillToAccountNumber: data.client.value || "",
-          //   Pickup_Company: data.Pickup_Company || "",
-          //   Pickup_Address1: data.Pickup_Address1 || "",
-          //   Pickup_Address2: null,
-          //   Pickup_Address3: null,
-          //   Pickup_City: data.Pickup_City || "",
-          //   Pickup_ProvState: data.Pickup_ProvState || "",
-          //   Pickup_PostalZip: data.Pickup_PostalZip || "",
-          //   Pickup_Country: data.Pickup_Country || "",
-          //   PickupLocation: null,
-          //   Pickup_Phone: data.Pickup_Phone || "",
-          //   Pickup_Phone_Ext: "",
-          //   Pickup_Email: data.Pickup_Email || null,
-          //   Pickup_Name: null,
-          //   Delivery_Company: data.Delivery_Company || "",
-          //   Delivery_Address1: data.Delivery_Address1 || "",
-          //   Delivery_Address2: "",
-          //   Delivery_Address3: "",
-          //   Delivery_City: data.Delivery_City || "",
-          //   Delivery_ProvState: data.Delivery_ProvState || "",
-          //   Delivery_PostalZip: data.Delivery_PostalZip || "",
-          //   Delivery_Country: data.Delivery_Country || null,
-          //   Delivery_Phone: data.Delivery_Phone || "",
-          //   Delivery_Email: data.Delivery_Email || null,
-          //   CarrierReferenceNumber: data.referenceNumber || "",
-          //   Notes: null,
-          //   ServiceCode: data.ServiceType.value || "",
-          //   RouteCode: "",
-          //   ShipperReference: null,
-          //   Reference2: null,
-          //   Reference3: null,
-          //   Reference4: null,
-          //   LaborCode: "",
-          //   JobOption: "",
-          //   EmailNotif: "",
-          //   AdditionalBarcode: null,
-          //   AdditionalEmails: "",
-          //   RequestedDateTime: null,
-          //   SpecialMobileInstructions: "",
-          //   Ready: null,
-          //   CloseTime: null,
-          //   PlannedETA: null,
-          //   ETA: null,
-          //   SalesOrderNumber: "",
-          //   ParcelType: data.ParcelType.value || "",
-          //   Items: data.items,
-          //   DeliveryTypeCode: null,
-          //   DiversionCode: null,
-          //   HandlingClassCode: null,
-          //   Source: null,
-          //   JobType: "",
-          //   Mode: "",
-          //   SubStatus: null,
-          //   PickupLocationID: null,
-          //   ScheduledDateTime: null,
-          //   TotalWeight: "",
-          //   NumberOfPieces: "",
-          //   WeightUnit: "",
-          //   JobDescription: "",
-          //   CutOffTime: "",
-          //   Status: "",
-          //   SubStatusComment: "",
-          //   TimezoneOffset: "",
-          //   ShpVers: "",
-          //   DISP_ScheduledJobsID: null,
-          //   AltRouteCode: null,
-          //   Option: 0,
-          //   SortOrder: "",
-          //   SortCode: null,
-          //   Pickup_Latitude: null,
-          //   Pickup_Longitude: null,
-          //   Delivery_Latitude: "",
-          //   Delivery_Longitude: "",
-          //   AssignmentMode: "",
-          // },
+          {
+            BillToAccountNumber: data.BillToAccountNumber.value || "",
+            Pickup_Company: data.Pickup_Company || "",
+            Pickup_Address1: data.Pickup_Address1 || "",
+            Pickup_Address2: "",
+            Pickup_Address3: "",
+            Pickup_City: data.Pickup_City || "",
+            Pickup_ProvState: data.Pickup_ProvState.value || "",
+            Pickup_PostalZip: data.Pickup_PostalZip || "",
+            Pickup_Country: data.Pickup_Country.value || "",
+            PickupLocation: "",
+            Pickup_Phone: data.Pickup_Phone || "",
+            Pickup_Phone_Ext: "",
+            Pickup_Email: data.Pickup_Email || "",
+            Pickup_Name: "",
+            Delivery_Company: data.Delivery_Company || "",
+            Delivery_Address1: data.Delivery_Address1 || "",
+            Delivery_Address2: "",
+            Delivery_Address3: "",
+            Delivery_City: data.Delivery_City || "",
+            Delivery_ProvState: data.Delivery_ProvState.value || "",
+            Delivery_PostalZip: data.Delivery_PostalZip || "",
+            Delivery_Country: data.Delivery_Country.value || "",
+            Delivery_Phone: data.Delivery_Phone || "",
+            Delivery_Email: data.Delivery_Email || "",
+            CarrierReferenceNumber: data.referenceNumber || "",
+            Notes: "hello world",
+            ServiceCode: data.ServiceCode.value || "",
+            RouteCode: "",
+            ShipperReference: "",
+            Reference2: "12333",
+            Reference3: "1234",
+            Reference4: "123",
+            LaborCode: "",
+            JobOption: "2",
+            EmailNotif: "3",
+            AdditionalBarcode: "",
+            AdditionalEmails: "",
+            RequestedDateTime:
+              data.RequestedDateTime || "2023-11-09T12:00:00+05:00",
+            SpecialMobileInstructions: "",
+            Ready: "",
+            CloseTime: "",
+            PlannedETA: "2023-09-22T04:00:00-05:00",
+            SalesOrderNumber: "",
+            // ParcelType: data.ParcelType.value || "",
+            Items: data.Items,
+            DeliveryTypeCode: "",
+            DiversionCode: "",
+            HandlingClassCode: "",
+            Source: "",
+            JobType: "",
+            Mode: "",
+            SubStatus: "0",
+            PickupLocationID: "",
+            ScheduledDateTime: "",
+            TotalWeight: "0",
+            NumberOfPieces: "0",
+            WeightUnit: "K",
+            JobDescription: data.JobDescription,
+            CutOffTime: "",
+            Status: "",
+            // SubStatusComment: "",
+            // TimezoneOffset: "",
+            ShpVers: "",
+            // DISP_ScheduledJobsID: '',
+            // AltRouteCode: '',
+            // Option: 0,
+            SortOrder: "",
+            SortCode: "",
+            Pickup_Latitude: "",
+            Pickup_Longitude: "",
+            // AssignmentMode
+          },
         ],
       };
 
@@ -210,7 +212,7 @@ const DataForm: React.FC = () => {
                 <Controller
                   name='BillToAccountNumber'
                   control={control}
-                  rules={{ required: true }}
+                  // rules={{ required: true }}
                   render={({ field: { onChange, value } }) => (
                     <InputSelect
                       label='Client'
@@ -229,7 +231,7 @@ const DataForm: React.FC = () => {
                 <Controller
                   name='ServiceCode'
                   control={control}
-                  rules={{ required: true }}
+                  // rules={{ required: true }}
                   render={({ field: { onChange, value } }) => (
                     <InputSelect
                       label='Service Type'
@@ -249,7 +251,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='RequestedDateTime'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <>
                     <p className='mb--5 font--bold'>Date And Time</p>
@@ -275,8 +277,8 @@ const DataForm: React.FC = () => {
                 type='text'
                 className='form__input'
                 title='Description'
-                {...register("detailDescription")}
-                name='detailDescription'
+                {...register("JobDescription")}
+                name='JobDescription'
                 placeholder='Description'
               />
             </div>
@@ -284,7 +286,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='ParcelType'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
                     label='Parcel Type'
@@ -304,7 +306,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='referenceNumber'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { value } }) => (
                   <div className='reference-number flex align-items--center'>
                     <input
@@ -317,7 +319,7 @@ const DataForm: React.FC = () => {
                     <button
                       type='button'
                       className='ml--20 form__submit font--bold text--white'
-                      onClick={() => generateRandomString(15)}
+                      onClick={() => generateRandomString(12)}
                     >
                       Random No.
                     </button>
@@ -438,6 +440,10 @@ const DataForm: React.FC = () => {
                     Length: null,
                     Description: "",
                     Price: null,
+                    AlternateBarcode: null,
+                    Barcode: null,
+                    UnitOfMeasure: null,
+                    UnitOfMeasureLength: null,
                   })
                 }
               >
@@ -518,7 +524,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='Pickup_ProvState'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
                     label='Pickup Province/State'
@@ -537,7 +543,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='Pickup_Country'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
                     label='Pickup Country'
@@ -557,7 +563,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='Pickup_Phone'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <PhoneInput
                     className='form__input'
@@ -661,7 +667,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='Delivery_ProvState'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
                     label='Delivery State'
@@ -680,7 +686,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='Delivery_Country'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <InputSelect
                     label='Delivery Country'
@@ -732,7 +738,7 @@ const DataForm: React.FC = () => {
               <Controller
                 name='Delivery_Phone'
                 control={control}
-                rules={{ required: true }}
+                // rules={{ required: true }}
                 render={({ field: { onChange, value } }) => (
                   <PhoneInput
                     className='form__input'

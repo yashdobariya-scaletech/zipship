@@ -10,7 +10,7 @@ const API_CONFIG = {
 };
 
 const getUrl = (url, params = {}) => {
-  let urlString = `${API_CONFIG.baseUrl}/apiv5/${url}`;
+  let urlString = `/apiv5/${url}`;
   if (params && Object.keys(params).length) {
     urlString += `?${queryString.stringify(params)}`;
   }
@@ -66,6 +66,7 @@ const commonAxios = ({
   const headers = {
     "Content-Type": contentType,
     "x-api-key": "8d70a88a-eecb-4595-a387-94294e3ab37f",
+    "Access-Control-Allow-Origin": "*",
   };
 
   return new Promise((resolve, reject) => {

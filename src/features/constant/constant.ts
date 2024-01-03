@@ -1,9 +1,9 @@
 export const ClientOptions = [
   {
     label: "dTox Organic Juice - Local",
-    value: "0000011111111111",
+    value: "TH01fdgfdg",
   },
-  { label: "dTox Organic Juice - Test", value: "0000011111111111" },
+  { label: "dTox Organic Juice - Test", value: "TH01" },
   { label: "Jambo Books", value: "0000011111111111" },
   { label: "Treehouse", value: "0000011111111111" },
 ];
@@ -11,7 +11,7 @@ export const ClientOptions = [
 export const ServiceTypeOptions = [
   {
     label: "Standard",
-    value: "Standard",
+    value: "STD",
   },
   { label: "Pick-up & Delivery Home", value: "Pick-up & Delivery Home" },
   {
@@ -70,4 +70,8 @@ export interface ItemsPieceProps {
   Length: number | null;
   Description: string;
   Price: number | null;
+  AlternateBarcode: string | null;
+  Barcode: string | null;
+  UnitOfMeasure: string | null;
+  UnitOfMeasureLength: string | null;
 }
