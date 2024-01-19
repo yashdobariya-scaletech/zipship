@@ -9,7 +9,7 @@ const API_CONFIG = {
   },
 };
 const getUrl = (url, params = {}) => {
-  let urlString = `${API_CONFIG.baseUrl}/apiv5/${url}`;
+  let urlString = `/apiv5/${url}`;
   if (params && Object.keys(params).length) {
     urlString += `?${queryString.stringify(params)}`;
   }
