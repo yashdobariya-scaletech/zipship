@@ -31,7 +31,7 @@ const get = (url, params = {}) => {
 const post = (url, params = {}, queryParams = {}) => {
   return commonAxios({
     method: "POST",
-    url: getUrl(url, queryParams),
+    url: "https://plus.shiptrackapi.com/apiv5/shipment.asmx/Create",
     data: params,
   });
 };
