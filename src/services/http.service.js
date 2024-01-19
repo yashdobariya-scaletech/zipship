@@ -8,6 +8,7 @@ const API_CONFIG = {
     shipment: "shipment.asmx/Create",
   },
 };
+console.log("API_CONFIG.baseUrl--:", API_CONFIG.baseUrl);
 
 const getUrl = (url, params = {}) => {
   let urlString = `/apiv5/${url}`;
