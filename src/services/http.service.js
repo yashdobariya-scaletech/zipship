@@ -8,10 +8,8 @@ const API_CONFIG = {
     shipment: "shipment.asmx/Create",
   },
 };
-console.log("API_CONFIG.baseUrl--:", API_CONFIG.baseUrl);
-
 const getUrl = (url, params = {}) => {
-  let urlString = `/apiv5/${url}`;
+  let urlString = `${API_CONFIG.baseUrl}/apiv5/${url}`;
   if (params && Object.keys(params).length) {
     urlString += `?${queryString.stringify(params)}`;
   }
