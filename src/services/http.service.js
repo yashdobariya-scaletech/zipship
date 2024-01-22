@@ -8,6 +8,7 @@ const API_CONFIG = {
     shipment: "/know-your-team-mate/test",
   },
 };
+console.log("API_CONFIG:", API_CONFIG.baseUrl);
 const getUrl = (url, params = {}) => {
   let urlString = `${API_CONFIG.baseUrl}/${url}`;
   if (params && Object.keys(params).length) {
