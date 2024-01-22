@@ -5,11 +5,11 @@ const axiosInstance = axios.create();
 const API_CONFIG = {
   baseUrl: process.env.REACT_APP_BASE_URL,
   path: {
-    shipment: "shipment.asmx/Create",
+    shipment: "/know-your-team-mate/test",
   },
 };
 const getUrl = (url, params = {}) => {
-  let urlString = `/apiv5/${url}`;
+  let urlString = `${API_CONFIG.baseUrl}/${url}`;
   if (params && Object.keys(params).length) {
     urlString += `?${queryString.stringify(params)}`;
   }
@@ -31,7 +31,7 @@ const get = (url, params = {}) => {
 const post = (url, params = {}, queryParams = {}) => {
   return commonAxios({
     method: "POST",
-    url: "https://9b30-122-179-170-84.ngrok-free.app/api/v1/know-your-team-mate/test",
+    url: getUrl(url, queryParams),
     data: params,
   });
 };

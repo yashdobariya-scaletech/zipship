@@ -10,7 +10,7 @@ import {
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
-import { HttpService } from "../../../services/http.service";
+import { API_CONFIG, HttpService } from "../../../services/http.service";
 import CollapseBox from "../../../shared/components/collapseBox/collapseBox";
 import ErrorMessage from "../../../shared/components/errorBoundary/errorMessage";
 import { InputSelect } from "../../../shared/components/inputSelect/inputSelect";
@@ -170,7 +170,7 @@ const DataForm: React.FC = () => {
         ],
       };
 
-      HttpService.post(payload)
+      HttpService.post(API_CONFIG.path.shipment, payload)
         .then((res) => {
           console.log(res, "res");
         })
