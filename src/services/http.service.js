@@ -31,7 +31,7 @@ const get = (url, params = {}) => {
 const post = (url, params = {}, queryParams = {}) => {
   return commonAxios({
     method: "POST",
-    url: "https://001c-122-179-170-84.ngrok-free.app/api/v1/know-your-team-mate/test",
+    url: "https://9b30-122-179-170-84.ngrok-free.app/api/v1/know-your-team-mate/test",
     data: params,
   });
 };
